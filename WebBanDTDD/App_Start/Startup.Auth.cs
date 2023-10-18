@@ -55,8 +55,8 @@ namespace WebBanDTDD
             //   consumerSecret: "");
 
             app.UseFacebookAuthentication(
-               appId: "1282680332458199",
-               appSecret: "3a17fd6d47e6ca8472fe8f77b523cd15");
+               appId: "dien cua ban vao day",
+               appSecret: "dien cua ban vao day");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
