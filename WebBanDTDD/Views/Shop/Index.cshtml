@@ -1,0 +1,345 @@
+﻿@model PagedList.IPagedList<WebBanDTDD.Models.Product>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Phone";
+}
+
+<section class="sec_categories mb-5">
+
+    <div class="container product_section_container">
+        <div class="row">
+            <div class="col product_section clearfix">
+
+                <!-- Breadcrumbs -->
+
+                <div class="breadcrumbs d-flex flex-row align-items-center">
+                    <ul>
+                        <li><a href="@Url.Action("Index", "Home")">Trang Chủ</a></li>
+                        <li class="active"><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>@Session["Namecate"]</a></li>
+                    </ul>
+                </div>
+
+
+                <div class="sidebar">
+                    <div class="sidebar_section">
+                        <div class="sidebar_title">
+                            <h5>Sản Phẩm</h5>
+                        </div>
+
+                        <ul class="sidebar_categories">
+                            @if ((string)Session["Namecate"] == "Điện thoại")
+                            {
+                                <li class="active"><a href="#"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>Điện thoại</a></li>
+                                <li>
+                                    <a href="@Url.Action("Index", "Shop",new {cate=2})">
+                                        Máy Tính Bảng
+                                    </a>
+                                </li>
+                                <li><a href="@Url.Action("Index", "Shop",new {cate=3})"> Phụ Kiện </a></li>
+                            }
+                            @if ((string)Session["Namecate"] == "Máy tính bảng")
+                            {
+                                <li>
+                                    <a href="@Url.Action("Index", "Shop",new {cate=1})">
+                                        Điện thoại
+                                    </a>
+                                </li>
+                                <li class="active"><a href="#"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i>Máy Tính Bảng</span></a></li>
+
+                                <li><a href="@Url.Action("Index", "Shop",new {cate=3})"> Phụ Kiện </a></li>
+                            }
+                            @if ((string)Session["Namecate"] == "Phụ kiện")
+                            {
+                                <li>
+                                    <a href="@Url.Action("Index", "Shop",new {cate=1})">
+                                        Điện thoại
+                                    </a>
+                                </li>
+
+                                <li><a href="@Url.Action("Index", "Shop",new {cate=2})"> Máy Tính Bảng</a></li>
+                                <li class="active"><a href="#"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i>Phụ Kiện</span></a></li>
+
+                            }
+                        </ul>
+                    </div>
+                    <div>
+                        @using (Html.BeginForm("Filter", "Shop", FormMethod.Get))
+                        {
+                            <div class="sidebar_section">
+                                <div class="sidebar_title">
+                                    <h5>Lọc theo giá</h5>
+                                </div>
+                                <p>
+                                    @Html.TextBox("money", ViewBag.money_Value as string, new { @class ="money", @placeholder = "nhập giá tiền" })
+                                </p>
+                                <div id="slider-range"></div>
+                                <div>
+                                    <input class="filter" type="submit" value="Lọc" />
+                                </div>
+
+                                <style>
+                                    .filter {
+                                        padding: 10px 15px;
+                                        border-radius: 8px;
+                                        background-color: #FE7C7F;
+                                        color: #ffff;
+                                    }
+                                    .money{
+                                        border: solid 1px #ecedee;
+                                        width: 200px;
+                                        height: 40px;
+                                        padding-left: 12px
+                                    }
+                                </style>
+                            </div>
+                            <div class="sidebar_section">
+                                <div class="sidebar_title">
+                                    <h5>Dung lượng</h5>
+                                </div>
+                                <ul class="checkboxes">
+                                    <li>
+
+                                        @Html.RadioButton("capacity", "16")
+                                        <label for="Capacity">16GB</label>
+                                    </li>
+                                    <li>
+                                        @Html.RadioButton("capacity", "32")
+                                        <label for="Capacity">32GB</label>
+                                    </li>
+                                    <li>
+
+                                        @Html.RadioButton("capacity", "64")
+                                        <label for="Capacity">64GB</label>
+                                    </li>
+                                    <li>
+                                        @Html.RadioButton("capacity", "128")
+
+                                        <label for="Capacity">128GB</label>
+                                    </li>
+                                    <li>
+                                        @Html.RadioButton("capacity", "256")
+                                        <label for="Capacity">256GB</label>
+                                    </li>
+                                    <li>
+                                        @Html.RadioButton("capacity", "512")
+                                        <label for="Capacity">512GB</label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="sidebar_section">
+                                <div class="sidebar_title">
+                                    <h5>Màu sắc</h5>
+                                </div>
+                                <ul class="checkboxes">
+                                    <li>
+                                        @Html.RadioButton("color", "Đen")
+                                        <label for="color">Đen</label>
+                                    </li>
+                                    <li>
+                                        @Html.RadioButton("color", "Trắng")
+                                        <label for="color">Trắng</label>
+                                    </li>
+                                    <li>
+                                        @Html.RadioButton("color", "Hồng")
+                                        <label for="color">Hồng</label>
+                                    </li>
+                                    <li>
+                                        @Html.RadioButton("color", "Xanh")
+                                        <label for="color">Xanh</label>
+                                    <li>
+                                        @Html.RadioButton("color", "Cam")
+                                        <label for="color">Cam</label>
+                                    </li>
+                                    <li>
+                                        @Html.RadioButton("color", "vàng")
+                                        <label for="color">vàng</label>
+                                    </li>
+
+
+                                </ul>
+                            </div>
+                        }
+                    </div>
+                   
+
+                </div>
+                <!-- Main Content -->
+
+                <div class="main_content">
+
+                    <!-- Products -->
+
+                    <div class="products_iso">
+                        <div class="row">
+                            <div class="col">
+
+                                <!-- Product Sorting -->
+                                <div>
+                                    @using (Html.BeginForm("Index", "Shop", FormMethod.Get))
+                                    {
+                                        var text = "Nhập tên " + @Session["Namecate"] + "...";
+                                        <p>
+                                            Tìm Kiếm: @Html.TextBox("Search_Data", ViewBag.FilterValue as string, new { @class = "text-sreach", placeholder = text })
+                                            <button type="submit" value="Find" class="sreach"><i class="fa fa-search " aria-hidden="true"></i></button>
+
+
+                                        </p>
+                                    }
+
+                                </div>
+                                @*<div class="product_sorting_container product_sorting_container_top">
+                                        <ul class="product_sorting">
+                                            <li>
+                                                <span class="type_sorting_text">Hãng</span>
+                                                <i class="fa fa-angle-down"></i>
+                                                <ul class="sorting_type">
+                                                    <li class="type_sorting_btn"><span>Apple</span></li>
+                                                    <li class="type_sorting_btn"><span>SamSung</span></li>
+                                                    <li class="type_sorting_btn" data-isotope-option='{ "sortBy": "name" }'><span>Xiaomi</span></li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <span>Hiển Thị</span>
+                                                <span class="num_sorting_text">6</span>
+                                                <i class="fa fa-angle-down"></i>
+                                                <ul class="sorting_num">
+                                                    <li class="num_sorting_btn"><span>6</span></li>
+                                                    <li class="num_sorting_btn"><span>12</span></li>
+                                                    <li class="num_sorting_btn"><span>24</span></li>
+                                                </ul>
+
+
+                                            </li>
+                                        </ul>
+
+                                    </div>*@
+
+                                <!-- Product Grid -->
+
+                                <div class="product-grid">
+                                    @foreach (var product in Model)
+                                    {
+                                        @Html.Partial("_ProductCart", product)
+                                    }
+                                </div>
+
+
+                                <!-- Product Sorting -->
+
+                                <div class="product_sorting_container product_sorting_container_bottom clearfix mt-5">
+
+                                    <span class="showing_results">Hiển thị @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) của @Model.PageCount trang</span>
+                                    <div class="pages d-flex flex-row align-items-center">
+                                        <div>
+                                            @{
+                                                int cate = (int)Session["cate"];
+
+                                            }
+                                            @Html.PagedListPager(Model, page => Url.Action("Index",
+                                     new { page, cate = @cate, Filter_Value = ViewBag.FilterValue }), new PagedListRenderOptions
+                                     {
+                                         UlElementClasses = new string[] { "pagination" },
+                                         MaximumPageNumbersToDisplay = 3,
+                                         LinkToFirstPageFormat = "Previous",
+                                         LinkToPreviousPageFormat = "<",
+                                         LinkToNextPageFormat = ">",
+                                         LinkToLastPageFormat = "Next",
+
+                                     })
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Benefit -->
+
+    <div class="benefit">
+        <div class="container">
+            <div class="row benefit_row">
+                <div class="col-lg-3 benefit_col">
+                    <div class="benefit_item d-flex flex-row align-items-center">
+                        <div class="benefit_icon"><i class="fa fa-truck" aria-hidden="true"></i></div>
+                        <div class="benefit_content">
+                            <h6>miễn phí vận chuyển</h6>
+                            <p>Freeship trên toàn quốc</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 benefit_col">
+                    <div class="benefit_item d-flex flex-row align-items-center">
+                        <div class="benefit_icon"><i class="fa fa-money" aria-hidden="true"></i></div>
+                        <div class="benefit_content">
+                            <h6>trả góp 0%</h6>
+                            <p>Nhanh chóng trong 15 phút chỉ cần CCCD, bằng lái xe</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 benefit_col">
+                    <div class="benefit_item d-flex flex-row align-items-center">
+                        <div class="benefit_icon"><i class="fa fa-undo" aria-hidden="true"></i></div>
+                        <div class="benefit_content">
+                            <h6>15 ngày đổi trả</h6>
+                            <p>Đổi ngay máy mới nếu lỗi từ nhà sản xuất</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 benefit_col">
+                    <div class="benefit_item d-flex flex-row align-items-center">
+                        <div class="benefit_icon"><i class="fa fa-clock-o" aria-hidden="true"></i></div>
+                        <div class="benefit_content">
+                            <h6>mở cửa tất cả các ngày trong tuần</h6>
+                            <p>8AM - 9PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<style>
+    .text-sreach {
+        border: solid 1px #ecedee;
+        width: 200px;
+        height: 40px;
+        padding-left: 12px;
+    }
+
+    ::placeholder {
+        color: #989898;
+    }
+
+    .sreach {
+        border: none;
+        background-color: #ffff;
+    }
+
+        .sreach i {
+            color: #b5aec4;
+        }
+</style>
+<script>
+    $("input:checkbox").on('click', function () {
+        // in the handler, 'this' refers to the box clicked on
+        var $box = $(this);
+        if ($box.is(":checked")) {
+            // the name of the box is retrieved using the .attr() method
+            // as it is assumed and expected to be immutable
+            var group = "input:checkbox[name='" + $box.attr("name") + "']";
+            // the checked state of the group/box on the other hand will change
+            // and the current value is retrieved using .prop() method
+            $(group).prop("checked", false);
+            $box.prop("checked", true);
+        } else {
+            $box.prop("checked", false);
+        }
+    });
+</script>

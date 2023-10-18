@@ -1,0 +1,63 @@
+﻿@model IEnumerable<WebBanDTDD.Models.OrderDetail>
+
+@{
+    ViewBag.Title = "Index";
+}
+@{
+    var info = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+}
+<div class="p-5">
+    <h2>Index</h2>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Order.OrderID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                Total Product Price
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Order.OrderID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.Name)
+                </td>
+                <td>
+                    @{
+                        string price = string.Format(info, "{0:c}", (@item.Price));
+                    }
+                    @price
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @{
+
+                        string Totalprice = string.Format(info, "{0:c}", (@item.Price * @item.Quantity));
+                    }
+                    @Totalprice
+                </td>
+            </tr>
+        }
+
+    </table>
+    <div>
+        @Html.ActionLink("Back to List", "Index", "Orders")
+    </div>
+</div>

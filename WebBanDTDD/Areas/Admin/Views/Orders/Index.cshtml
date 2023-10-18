@@ -1,0 +1,129 @@
+﻿@model PagedList.IPagedList<WebBanDTDD.Models.V_OrderTemp>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+}
+@{
+    var info = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+}
+<div class="p-5">
+
+    <h2>Order</h2>
+
+    @using (Html.BeginForm("Index", "Orders", FormMethod.Get))
+    {
+        <p>
+            Search Name: @Html.TextBox("Search_Data", ViewBag.FilterValue as string, new { @type = "number" })
+            <input type="submit" value="Find" />
+        </p>
+    }
+    <table class="table pt-3">
+        <tr>
+            <th> @Html.ActionLink("Order", "Index", new { Sorting_Order = ViewBag.SortingName, Filter_Value = ViewBag.FilterValue })</th>
+            <th>
+                @Html.ActionLink("OrderDate", "Index", new { Sorting_Order = ViewBag.SortingOrderDate, Filter_Value = ViewBag.FilterValue })
+            </th>
+            <th>
+                Status
+            </th>
+            <th>
+                Delivered
+            </th>
+            <th>
+                DeliveryAddress
+            </th>
+            <th>
+                @Html.ActionLink("DeliveredDate", "Index", new { Sorting_Order = ViewBag.SortingDeliveredDate, Filter_Value = ViewBag.FilterValue })
+
+            </th>
+            <th>
+                CustomerID
+            </th>
+            <th>CustomerInforID</th>
+
+            <th>
+                Discount
+            </th>
+            <th>Total Order Price</th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a href="@Url.Action("Index","OrderDetails",new { id = item.OrderID })">@item.OrderID</a>
+                </td>
+                <td>
+                    @item.OrderDate
+                </td>
+                <td>
+                    @item.Status
+                </td>
+                <td>
+                    @item.Delivered
+                </td>
+                <td>
+                    @item.DeliveryAddress
+                </td>
+                <td>
+                    @item.DeliveredDate
+                </td>
+                <td>
+                    @item.CustomerID
+                </td>
+                <td>
+                    @item.CustomerInforID
+                </td>
+                <td>
+                    @string.Format("{0}%", @item.Discount)
+
+                </td>
+                <td>
+
+                    @string.Format(info, "{0:c}", @item.TotalOrder)
+
+
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.OrderID })
+                </td>
+            </tr>
+        }
+
+    </table>
+    @Html.PagedListPager(Model, Page_No => Url.Action("Index", "Orders",
+new { Page_No, Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.FilterValue }), new PagedListRenderOptions
+{
+    UlElementClasses = new string[] { "pagination" },
+    MaximumPageNumbersToDisplay = 3,
+    LinkToFirstPageFormat = "Previous",
+    LinkToPreviousPageFormat = "<",
+    LinkToNextPageFormat = ">",
+    LinkToLastPageFormat = "Next",
+
+})
+</div>
+<style>
+
+    .pagination li {
+        margin: 0 4px;
+    }
+
+        .pagination li a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            /*border: 1px solid #ddd;*/
+        }
+
+    .pagination .active {
+        background-color: #01a9ac;
+        color: white !important;
+        border: 1px solid #01a9ac;
+        border-radius: 100%;
+    }
+</style>

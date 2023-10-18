@@ -1,0 +1,235 @@
+﻿@{
+    var baseurl = string.Format("{0}://{1}", Request.Url.Scheme, Request.Url.Authority);
+    string strVersion = DateTime.Now.ToString("yyyyMMddhh");
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HKC Shop</title>
+    <link href="~/theme/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="~/theme/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="~/theme/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+    <link rel="stylesheet" type="text/css" href="~/theme/plugins/OwlCarousel2-2.2.1/animate.css">
+    <link rel="stylesheet" type="text/css" href="~/theme/css/styles.css?v=@strVersion">
+    <script src="~/theme/scripts/vendors.js?v=@strVersion"></script>
+</head>
+<body>
+    <div class="super_container">
+        <header class="header trans_300">
+            <!-- Main Navigation -->
+            <div class="main_nav_container">
+                <div class="container-menu ">
+                    <div class="row">
+                        <div class="col-lg-12 text-right">
+                            <div class="logo_container">
+                                <a href="@Url.Action("Index", "Home")">HKC<span>mobile</span></a>
+                            </div>
+                            <nav class="navbar">
+                                <ul class="navbar_menu">
+
+                                    <li><a href="@Url.Action("Index", "Home")">trang chủ</a></li>
+                                    <li><a href="@Url.Action("Index", "Shop",new {cate=1})">điện thoại</a></li>
+                                    <li><a href="@Url.Action("Index", "Shop",new {cate=2})">máy tính bảng</a></li>
+                                    <li><a href="@Url.Action("Index", "Shop",new {cate=3})">phụ kiện</a></li>
+                                    <li>@Html.ActionLink("tin tức", "Index", "Blog")</li>
+                                    <li>@Html.ActionLink("liên hệ", "Contact", "Home")</li>
+                                </ul>
+                                <ul class="navbar_user">
+                                    <li>
+                                        @Html.Partial("_LoginPartial")
+                                    </li>
+
+                                    <li class="checkout">
+                                        @Html.Partial("_shoppingCartPartial")
+                                    </li>
+
+                                </ul>
+                                <div class="hamburger_container">
+                                    <i class="fa fa-bars" aria-hidden="true"></i>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="fs_menu_overlay"></div>
+        <div class="hamburger_menu">
+            <div class="hamburger_close"><i class="fa fa-times" aria-hidden="true"></i></div>
+            <div class="hamburger_menu_content text-right">
+                <ul class="menu_top_nav">
+                    <li><a href="@Url.Action("Index", "Home")">trang chủ</a></li>
+                    <li><a href="@Url.Action("Index", "Shop",new {cate=1})">điện thoại</a></li>
+                    <li><a href="@Url.Action("Index", "Shop",new {cate=2})">máy tính bảng</a></li>
+                    <li><a href="@Url.Action("Index", "Shop",new {cate=3})">phụ kiện</a></li>
+                    <li>@Html.ActionLink("tin tức", "Index", "Blog")</li>
+                    <li>@Html.ActionLink("liên hệ", "Contact", "Home")</li>
+                </ul>
+                <ul class="navbar_user">
+                    <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                    <li><a href="@Url.Action("Index", "Home", new{ Area ="Admin" })"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+                    <li class="checkout">
+                        @Html.Partial("_shoppingCartPartial")
+                    </li>
+                </ul>
+            </div>
+        </div>
+        @RenderBody()
+        <div id="dmtop"><i class="fa fa-angle-double-up fa-2x mt-2"></i></div>
+        <footer class="footer">
+            <div style="padding: 40px 0 40px;" class="footer-area">
+                <div class="container">
+                    <div class="row section_gap">
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="single-footer-widget tp_widgets">
+                                <h4 class="footer_title large_title">Nhiệm vụ</h4>
+                                <p>
+                                    HKCMobile luôn nỗ lực hết mình để đáp ứng các tiêu chí chọn mua smartphone của quý khách hàng.
+                                    Chúng tôi phát triển một cửa hàng tiêu chuẩn nhằm mang đến trải nghiệm tốt nhất về sản phẩm và dịch vụ cho người dùng Việt Nam.
+                                </p>
+                                <p>
+                                    Cảm ơn chân thành quý khách hàng đã tin dùng và lựa chọn HKCMobile!!!
+                                </p>
+                            </div>
+                        </div>
+                        <div class="offset-lg-1 col-lg-2 col-md-6 col-sm-6">
+                            <div class="single-footer-widget tp_widgets">
+                                <h4 class="footer_title">Truy Cập Nhanh</h4>
+                                <ul class="list">
+                                    <li><a href="@Url.Action("Index", "Home")">trang chủ</a></li>
+                                    <li><a href="@Url.Action("Index", "Shop",new {cate=1})">điện thoại</a></li>
+                                    <li><a href="@Url.Action("Index", "Shop",new {cate=2})">máy tính bảng</a></li>
+                                    <li><a href="@Url.Action("Index", "Shop",new {cate=3})">phụ kiện</a></li>
+                                    <li>@Html.ActionLink("tin tức", "Index", "Blog")</li>
+                                    <li>@Html.ActionLink("liên hệ", "Contact", "Home")</li>
+                                </ul>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-6 col-sm-6">
+                            <div class="single-footer-widget instafeed">
+                                <h4 class="footer_title">Hình Ảnh</h4>
+                                <ul class="list instafeed d-flex flex-wrap">
+                                    <li><img src="~/theme/images/footerimage/iphone-14-pro-max-vang-thumb-600x600 (1).jpg" alt=""></li>
+                                    <li><img src="~/theme/images/footerimage/ipad10wifi.png" alt=""></li>
+                                    <li><img src="~/theme/images/footerimage/ssgs22ultra.png" alt=""></li>
+                                    <li><img src="~/theme/images/footerimage/ssgs23ultra.png" alt=""></li>
+                                    <li><img src="~/theme/images/footerimage/ssgtabs8ultra.png" alt=""></li>
+                                    <li><img src="~/theme/images/footerimage/xiaomi12t.png" alt=""></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="offset-lg-1 col-lg-3 col-md-6 col-sm-6">
+                            <div class="single-footer-widget tp_widgets">
+                                <h4 class="footer_title">Thông Tin Liên Hệ</h4>
+                                <div class="ml-40">
+                                    <p class="sm-head">
+                                        <span class="fa fa-location-arrow"></span>
+                                        Địa Chỉ Cửa Hàng
+                                    </p>
+                                    <p>Khu phố 3, Phường 7, Quận 4, Thành Phố Ước Mơ</p>
+                                    <p class="sm-head">
+                                        <span class="fa fa-phone"></span>
+                                        Mua Nhanh Online
+                                    </p>
+                                    <p>
+                                        19006207
+                                    </p>
+                                    <p class="sm-head">
+                                        <span class="fa fa-phone"></span>
+                                        Bảo Hành - Hỗ Trợ Kỹ Thuật
+                                    </p>
+                                    <p>
+                                        0982762311
+                                    </p>
+                                    <p class="sm-head">
+                                        <span class="fa fa-envelope"></span>
+                                        Hỗ Trợ Khách Hàng
+                                    </p>
+                                    <p>
+                                        hotro@hkcmobile.vn
+                                    </p>
+                                    <p class="sm-head">
+                                        <span class="fa fa-envelope"></span>
+                                        Khách Hàng Doanh Nghiệp
+                                    </p>
+                                    <p>
+                                        b2b@hkcmobile.vn
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="padding: 20px;" class="footer-bottom">
+                <div class="container">
+                    <div class="row d-flex">
+                        <p class="col-lg-12 footer-text text-center">
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;
+                            <script>document.write(new Date().getFullYear());</script> HKCMobile.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <style>
+            .user {
+                color: #1e1e27;
+                font-size: 15px;
+                font-weight: 600;
+            }
+
+            .container-menu {
+                max-width: 1400px;
+                left: 4rem;
+            }
+
+            #dmtop {
+            }
+        </style>
+    </div>
+    <!-- Messenger Plugin chat Code -->
+    <div id="fb-root"></div>
+
+    <!-- Your Plugin chat code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+        var chatbox = document.getElementById('fb-customer-chat');
+        chatbox.setAttribute("page_id", "106230552437231");
+        chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+
+    <!-- Your SDK code -->
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                xfbml: true,
+                version: 'v16.0'
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+
+    <script src="~/theme/plugins/Isotope/isotope.pkgd.min.js"></script>
+    <script src="~/theme/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+    <script src="~/theme/plugins/easing/easing.js"></script>
+    <script src="~/theme/scripts/app.js?v=@strVersion"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

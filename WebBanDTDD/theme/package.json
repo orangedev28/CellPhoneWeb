@@ -1,0 +1,47 @@
+{
+  "name": "DTDD",
+  "version": "1.0.0",
+  "description": "Promotion",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "animate.css": "^3.7.2",
+    "bootstrap": "^4.6.1",
+    "feather-icons": "^4.28.0",
+    "flipdown": "^0.3.2",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.6.0",
+    "jquery-ui": "^1.13.2",
+    "jquery-ui-dist": "^1.13.2",
+    "jquery-validation": "^1.19.3",
+    "jquery.browser": "^0.1.0",
+    "lazyload": "^2.0.0-rc.2",
+    "node-sass": "^7.0.1",
+    "popper.js": "^1.15.0",
+    "typeahead.js": "^0.11.1",
+    "validator": "^13.5.2"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.26.13",
+    "browserify": "^16.3.0",
+    "del": "5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "6.1.0",
+    "gulp-clean-css": "4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-header": "2.0.9",
+    "gulp-jshint": "^2.1.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-rename": "2.0.0",
+    "gulp-sass": "4.1.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "3.0.2",
+    "jshint": "^2.13.4",
+    "merge-stream": "2.0.0",
+    "vinyl-source-stream": "^2.0.0"
+  }
+}

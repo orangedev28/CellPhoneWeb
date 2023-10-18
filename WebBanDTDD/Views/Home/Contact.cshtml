@@ -1,0 +1,93 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+<section class="sec_contact">
+    <div class="container contact_container">
+        <div class="row">
+            <div class="col">
+
+                <!-- Breadcrumbs -->
+
+                <div class="breadcrumbs d-flex flex-row align-items-center">
+                    <ul>
+                        <li><a href="@Url.Action("Index", "Home")">Trang Chủ</a></li>
+                        <li class="active"><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Liên Hệ</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+        <div class="google-map ">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.126492805397!2d106.7122672146211!3d10.801622761682207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528a459cb43ab%3A0x6c3d29d370b52a7e!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBDw7RuZyBuZ2jhu4cgVFAuSENNIC0gSFVURUNI!5e0!3m2!1svi!2s!4v1680415948768!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+       
+        </div>
+        <!-- Contact Us -->
+
+        <div class="row pt-5">
+
+            <div class="col-lg-6 contact_col">
+                <div class="contact_contents">
+                    <h1>Liên hệ chúng tôi</h1>
+                    <p>Quý khách cần thông tin về sản phẩm, chính sách bán hàng hoặc các vấn đề liên quan tới Hoàng Hà Mobile, xin vui lòng liên hệ bộ phận Chăm sóc khách hàng qua hình thức:</p>
+                    <div>
+                        <p>(800) 686-6688</p>
+                        <p>huykhangcuong@gmail.com</p>
+                    </div>
+                    <div>
+                        <p>Xin cảm ơn!</p>
+                    </div>
+                    <div>
+                        <p>Thời gian hoạt động: 8.00-17.00 Thứ 2-7</p>
+                        <p>Chủ Nhật: Nghỉ</p>
+                    </div>
+                </div>
+
+                <!-- Follow Us -->
+
+                <div class="follow_us_contents">
+                    <h1>Theo dõi Shop</h1>
+                    <ul class="social d-flex flex-row">
+                        <li><a href="#" style="background-color: #3a61c9"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="#" style="background-color: #41a1f6"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="#" style="background-color: #fb4343"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                        <li><a href="#" style="background-color: #8f6247"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="col-lg-6 get_in_touch_col">
+                <div class="get_in_touch_contents">
+                    <h1>Liên hệ với chúng tôi!</h1>
+                    <p>Vui lòng điền vào mẫu dưới đây</p>
+                    <form action="post">
+                        <div>
+                            <input id="input_name" class="form_input input_name input_ph" type="text" name="name" placeholder="Tên" required="required" data-error="Name is required.">
+                            <input id="input_email" class="form_input input_email input_ph" type="email" name="email" placeholder="Email" required="required" data-error="Valid email is required.">
+                            <input id="input_website" class="form_input input_website input_ph" type="url" name="name" placeholder="Trang web" required="required" data-error="Name is required.">
+                            <textarea id="input_message" class="input_ph input_message" name="message" placeholder="Tin nhắn" rows="3" required data-error="Please, write us a message."></textarea>
+                        </div>
+                        <div>
+                            <button id="review_submit" type="submit" class="red_button message_submit_btn trans_300" value="Submit">Gửi</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<style>
+    .google-map {
+        padding-bottom: 50%;
+        position: relative;
+    }
+
+        .google-map iframe {
+            height: 100%;
+            width: 100%;
+            left: 0;
+            top: 0;
+            position: absolute;
+        }
+</style>

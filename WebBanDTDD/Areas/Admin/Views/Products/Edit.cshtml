@@ -1,0 +1,343 @@
+﻿@model WebBanDTDD.Models.Product
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2 class="p-3">Edit</h2>
+<script src="~/ckeditor/ckeditor.js">
+</script>
+@using (Ajax.BeginForm("edit", "Products", new { Area = "Admin" }, new AjaxOptions() { HttpMethod = "POST" }, new { id = "frmTaskSave", enctype = "multipart/form-data" }))
+{
+
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal row p-5 m-0">
+        <h4>Product</h4>
+        <hr />
+        @Html.HiddenFor(model => model.ProductID)
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group col-md-6 ">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-4 pb-1 pt-2 " })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group  col-md-6">
+            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-4 pb-1 pt-2" })
+            <div class="col-md-8">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.Status)
+                    @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-4 pb-1 pt-2" })
+            <div class="col-md-8">
+                <input type="file" name="file" id="Upimg1"><br><br>
+                <div id="divImageMediaPreview1">
+                    <img src="@Model.Image" style="width: 100px; height: 100px; padding: 10px" />
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.Listimage, htmlAttributes: new { @class = "control-label col-md-4 pb-1 pt-2" })
+            <div class="col-md-8">
+                <input type="file" name="files" id="Upimg" multiple><br><br>
+                <div id="divImageMediaPreview">
+                    @{
+
+                        try
+                        {
+                            var Listimage = Model.Listimage.Split(',');
+
+                            if (!string.IsNullOrEmpty(Model.Listimage))
+                            {
+
+
+                                if (@Listimage.Count() > 0)
+                                {
+                                    foreach (var item in Listimage)
+                                    {
+                                        <img src="@item" alt="" data-image="@item" style="width: 100px; height: 100px; padding: 10px">
+                                    }
+                                }
+
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
+
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-4 pb-1 pt-2" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.PromotionPrice, htmlAttributes: new { @class = "control-label col-md-4 pb-1 pt-2" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.PromotionPrice, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PromotionPrice, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.VAT, htmlAttributes: new { @class = "control-label col-md-4 pb-1 pt-2" })
+            <div class="col-md-8">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.VAT)
+                    @Html.ValidationMessageFor(model => model.VAT, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-4 pb-1 pt-2" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.Warranty, htmlAttributes: new { @class = "control-label col-md-4 pb-1 pt-2" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.Warranty, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Warranty, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.Hot, htmlAttributes: new { @class = "control-label col-md-4 pb-1 pt-2" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.Hot, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Hot, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-4 pb-1 pt-2" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group col-md-6">
+            <div class="col-md-4 pb-1 pt-2">
+                Product Caregory
+            </div>
+            <div class="col-md-8">
+                @Html.DropDownList("CateID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CateID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            <div class="col-md-4 pb-1 pt-2">
+                Product Brand
+            </div>
+            <div class="col-md-8">
+                @Html.DropDownList("BrandID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.BrandID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            <div class="col-md-4 pb-1 pt-2">
+                Supplier
+            @*@</div>
+            <div class="col-md-8">
+                @Html.DropDownList("SupplierID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.SupplierID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.Tags, htmlAttributes: new { @class = "control-label col-md-4 pb-1 pt-2" })
+            <div class="col-md-8">*@
+                @Html.EditorFor(model => model.Tags, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Tags, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.Capacity, htmlAttributes: new { @class = "control-label col-md-4 pb-1 pt-2" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.Capacity, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Capacity, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.Color, htmlAttributes: new { @class = "control-label col-md-4 pb-1 pt-2" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.Color, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Color, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group col-md-12">
+            @Html.LabelFor(model => model.Detail, htmlAttributes: new { @class = "control-label col-md-4 pb-1 pt-2" })
+            <div class="col-md-8">
+                @Html.TextAreaFor(model => model.Detail, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Detail, "", new { @class = "text-danger" })
+            </div>
+            <script>
+                CKEDITOR.replace("Detail");
+            </script>
+        </div>
+
+        <div class="form-group p-4">
+            <div class="col-md-offset-4 col-md-8 pt-2">
+                <input type="submit" value="Save" class="btn btn-default" style="background-color: #01a9ac; border-color: #01a9ac; color: #fff; cursor: pointer; -webkit-transition: all ease-in .3s; transition: all ease-in .3s;" />
+            </div>
+        </div>
+        <div class="pt-5">
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+
+    </div>
+
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section scripts{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+    $(document).ready(function () {
+
+        $('#frmTaskSave').submit(function (e) {
+            var fdata = new FormData($('#frmTaskSave').get(0));
+            var profilephoto = $('#Upimg').val();
+            fdata.append("Upimg", profilephoto);
+            var fileInput = document.getElementById('Upimg');
+
+            if (fileInput.files.length > 0) {
+                for (i = 0; i < fileInput.files.length; i++) {
+
+                    var sfilename = fileInput.files[i].name;
+                    let srandomid = Math.random().toString(36).substring(7);
+
+                    fdata.append(sfilename, fileInput.files[i]);
+
+                    var markup = "<tr id='" + srandomid + "'><td>" + sfilename + "</td><td><a href='#' onclick='DeleteFile(\"" + srandomid + "\",\"" + sfilename +
+                        "\")'><span class='glyphicon glyphicon-remove red'></span></a></td></tr>"; // Binding the file name
+                    // $("#FilesList tbody").append(markup);
+
+                }
+                fdata.append('files', profilephoto);
+
+
+                var name = $('#Name').val();
+                if (name) {
+                    fdata.append("Name", name);
+                    fdata.append("Upimg", profilephoto);
+                    $.ajax({
+                        type: "Post",
+                        url: '@Url.Action("Edit", "Products"), new { Area = "Admin" }',
+                        data: fdata,
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            $("#myModal").html(data);
+                        }
+                    });
+                }
+            }
+            var profilephoto1 = $('#Upimg1').val();
+            fdata.append("Upimg1", profilephoto1);
+            var fileInput1 = document.getElementById('Upimg1');
+             if (fileInput1.files.length > 0) {
+                for (i = 0; i < fileInput1.files.length; i++) {
+
+                    var sfilename = fileInput1.files[i].name;
+                    let srandomid = Math.random().toString(36).substring(7);
+
+                    fdata.append(sfilename, fileInput1.files[i]);
+
+                    var markup = "<tr id='" + srandomid + "'><td>" + sfilename + "</td><td><a href='#' onclick='DeleteFile(\"" + srandomid + "\",\"" + sfilename +
+                        "\")'><span class='glyphicon glyphicon-remove red'></span></a></td></tr>"; // Binding the file name
+                    // $("#FilesList tbody").append(markup);
+
+                }
+                fdata.append('files', profilephoto1);
+
+
+                var name = $('#Name').val();
+                if (name) {
+                    fdata.append("Name", name);
+                    fdata.append("Upimg1", profilephoto1);
+                    $.ajax({
+                        type: "Post",
+                        url: '@Url.Action("Edit", "Products"), new { Area = "Admin" }',
+                        data: fdata,
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            $("#myModal").html(data);
+                        }
+                    });
+                }
+            }
+        });
+        $("#Upimg").change(function () {
+            if (typeof (FileReader) != "undefined") {
+                var dvPreview = $("#divImageMediaPreview");
+                dvPreview.html("");
+                $($(this)[0].files).each(function () {
+                    var file = $(this);
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        var img = $("<img />");
+                        img.attr("style", "width: 100px; height:100px; padding: 10px");
+                        img.attr("src", e.target.result);
+                        dvPreview.append(img);
+                    }
+                    reader.readAsDataURL(file[0]);
+                });
+            } else {
+                alert("This browser does not support HTML5 FileReader.");
+            }
+        });
+        $("#Upimg1").change(function () {
+            var dvPreview = $("#divImageMediaPreview1");
+            dvPreview.html("");
+            if (typeof (FileReader) != "undefined") {
+
+                $($(this)[0].files).each(function () {
+                    var file = $(this);
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        var img = $("<img />");
+                        img.attr("style", "width: 100px; height:100px; padding: 10px");
+                        img.attr("src", e.target.result);
+                        dvPreview.append(img);
+                    }
+                    reader.readAsDataURL(file[0]);
+                });
+            }
+            
+        });
+
+
+
+    });
+
+    </script>
+}

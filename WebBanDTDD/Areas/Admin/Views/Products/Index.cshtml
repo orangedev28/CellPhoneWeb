@@ -1,0 +1,115 @@
+﻿@model PagedList.IPagedList<WebBanDTDD.Models.Product>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="p-5">
+    <div class=" p-4">
+        <a href="@Url.Action("Create","Products")" class="btn btn-default" style="background-color: #01a9ac; border-color: #01a9ac; color: #fff; cursor: pointer; -webkit-transition: all ease-in .3s; transition: all ease-in .3s;">Create</a>
+    </div>
+    @using (Html.BeginForm("Index", "Products", FormMethod.Get))
+    {
+        <p>
+            Search Name: @Html.TextBox("Search_Data", ViewBag.FilterValue as string)
+            <input type="submit" value="Find" />
+        </p>
+    }
+    <div class="table-responsive pt-4">
+        <table class="table">
+            <tr>
+                <th>Image</th>
+                <th>
+                    @Html.ActionLink("Product Name", "Index", new { Sorting_Order = ViewBag.SortingName, Filter_Value = ViewBag.FilterValue })
+                </th>
+                <th>
+                    @Html.ActionLink("Price", "Index", new { Sorting_Order = ViewBag.SortingPrice, Filter_Value = ViewBag.FilterValue })
+                </th>
+                <th>PromotionPrice</th>
+                <th>VAT</th>
+
+                <th>
+                    @Html.ActionLink("Quantity", "Index", new { Sorting_Order = ViewBag.SortingQuantity, Filter_Value = ViewBag.FilterValue })
+                </th>
+                <th>Warranty</th>
+                <th>Hot</th>
+                <th>Product Category</th>
+                <th>Brand</th>
+                <th>Supplier</th>
+                <th>Capacity</th>
+                <th>Color</th>
+                <th>Status</th>
+                <th>CreatedBy</th>
+                <th>Status</th>
+                <th></th>
+
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img src="@item.Image" width="100" height="100" />
+                    </td>
+                    <td>@item.Name</td>
+                    <td>@item.Price</td>
+                    <td>@item.PromotionPrice</td>
+                    <td>@item.VAT</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.Warranty</td>
+                    <td>@item.Hot</td>
+                    <td>@item.ProductCategory.Name</td>
+                    <td>@item.Brand.Name</td>
+                    <td>@item.Supplier.Name</td>
+                    <td>@item.Capacity</td>
+                    <td>@item.Color</td>
+                    <td>@Html.DisplayFor(modelItem => item.CreatedBy)</td>
+                    <td>@item.Status</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ProductID }) |
+                        @Html.ActionLink("Delete",
+         "Delete", new { id = item.ProductID },
+         new { onclick = "return confirm('Do you really want to delete the tag " + item.Name + "?')" })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div>
+        @Html.PagedListPager(Model, Page_No => Url.Action("Index",
+    new { Page_No, Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.FilterValue }), new PagedListRenderOptions
+    {
+        UlElementClasses = new string[] { "pagination" },
+        MaximumPageNumbersToDisplay = 3,
+        LinkToFirstPageFormat = "Previous",
+        LinkToPreviousPageFormat = "<",
+        LinkToNextPageFormat = ">",
+        LinkToLastPageFormat = "Next",
+
+    })
+    </div>
+</div>
+
+<style>
+
+    .pagination li {
+        margin: 0 4px;
+    }
+
+        .pagination li a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            /*border: 1px solid #ddd;*/
+        }
+
+    .pagination .active {
+        background-color: #01a9ac;
+        color: white !important;
+        border: 1px solid #01a9ac;
+        border-radius: 100%;
+    }
+</style>

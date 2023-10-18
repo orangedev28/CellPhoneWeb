@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7708b5dd6676431997d4ac36669e67b4" Name="Diagram1">
+        <EntityTypeShape EntityType="MobileShopModel.C__MigrationHistory" Width="1.5" PointX="5.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileShopModel.About" Width="1.5" PointX="7.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileShopModel.AspNetRole" Width="1.5" PointX="10.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileShopModel.AspNetUserClaim" Width="1.5" PointX="15.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileShopModel.AspNetUserLogin" Width="1.5" PointX="15.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileShopModel.AspNetUser" Width="1.5" PointX="13" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileShopModel.Brand" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileShopModel.Config" Width="1.5" PointX="0.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileShopModel.Contact" Width="1.5" PointX="0.75" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileShopModel.CustomerInfor" Width="1.5" PointX="3.75" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileShopModel.Invoice" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileShopModel.InvoiceDetail" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileShopModel.OrderDetail" Width="1.5" PointX="8.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileShopModel.Order" Width="1.5" PointX="6" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileShopModel.Post" Width="1.5" PointX="11" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileShopModel.PostCategory" Width="1.5" PointX="8.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileShopModel.PostComment" Width="1.5" PointX="13.25" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileShopModel.Product" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileShopModel.ProductCategory" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileShopModel.ProductComment" Width="1.5" PointX="5.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileShopModel.Supplier" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileShopModel.sysdiagram" Width="1.5" PointX="8.75" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileShopModel.Tag" Width="1.5" PointX="13.25" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileShopModel.Acount_temp" Width="1.5" PointX="15.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileShopModel.V_OrderTemp" Width="1.5" PointX="15.75" PointY="11.875" IsExpanded="true" />
+        <AssociationConnector Association="MobileShopModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileShopModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileShopModel.FK_Product_Brand" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileShopModel.FK_Orders_CustomerInfor1" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileShopModel.FK_InvoiceDetail_Invoice" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileShopModel.FK_InvoiceDetail_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileShopModel.FK_OrderDetail_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileShopModel.FK_OrderDetail_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileShopModel.FK_Post_PostCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileShopModel.FK_PostComment_Post" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileShopModel.FK_Product_ProductCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileShopModel.FK_Product_Supplier" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileShopModel.FK_ProductComment_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileShopModel.AspNetUserRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileShopModel.PostTag" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

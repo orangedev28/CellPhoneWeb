@@ -1,0 +1,231 @@
+﻿@model PagedList.IPagedList<WebBanDTDD.Models.Product>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Phone";
+}
+
+<section class="sec_categories mb-5">
+
+    <div class="container product_section_container">
+        <div class="row">
+            <div class="col product_section clearfix">
+
+                <!-- Breadcrumbs -->
+
+                <div class="breadcrumbs d-flex flex-row align-items-center">
+                    <ul>
+                        <li><a href="@Url.Action("Index", "Home")">Trang Chủ</a></li>
+                        <li class="active"><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i> @Session["Namebrand"]</a></li>
+                    </ul>
+                </div>
+
+                <!-- Sidebar -->
+
+                <div class="sidebar">
+                    <div class="sidebar_section">
+                        <div class="sidebar_title">
+                            <h5>Hãng</h5>
+                        </div>
+                        <ul class="sidebar_categories">
+                            @if ((string)Session["Namebrand"] == "Samsung")
+                            {
+                                <li><a href="@Url.Action("Brand", "Shop",new {brand=1})">Apple</a></li>
+                                <li class="active"><a href="#"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>Samsung</a></li>
+                                <li><a href="@Url.Action("Brand", "Shop",new {brand=3})">Xiaomi</a></li>
+                            }
+                            @if ((string)Session["Namebrand"] == "Apple")
+                            {
+                                <li class="active"><a href="#"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>Apple</a></li>
+                                <li><a href="@Url.Action("Brand", "Shop",new {brand=2})">Samsung</a></li>
+
+                                <li><a href="@Url.Action("Brand", "Shop",new {brand=3})">Xiaomi</a></li>
+                            }
+                            @if ((string)Session["Namebrand"] == "Xiaomi")
+                            {
+                                <li><a href="@Url.Action("Brand", "Shop",new {brand=1})">Apple</a></li>
+                                <li><a href="@Url.Action("Brand", "Shop",new {brand=2})">Samsung</a></li>
+
+                                <li class="active"><a href="#"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>Xiaomi</a></li>
+                            }
+                        </ul>
+                    </div>
+
+                    <!-- Price Range Filtering -->
+                    <!--<div class="sidebar_section">
+                        <div class="sidebar_title">
+                            <h5>Lọc theo giá</h5>
+                        </div>
+                        <p>
+                            <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                        </p>
+                        <div id="slider-range"></div>
+                        <div class="filter_button"><span>Lọc</span></div>
+                    </div>-->
+
+                    <!-- Sizes -->
+                    <!--<div class="sidebar_section">
+                        <div class="sidebar_title">
+                            <h5>Dung lượng</h5>
+                        </div>
+                        <ul class="checkboxes">
+                            <li><i class="fa fa-square-o" aria-hidden="true"></i><span>16GB</span></li>
+                            <li class="active"><i class="fa fa-square" aria-hidden="true"></i><span>32GB</span></li>
+                            <li><i class="fa fa-square-o" aria-hidden="true"></i><span>64GB</span></li>
+                            <li><i class="fa fa-square-o" aria-hidden="true"></i><span>128GB</span></li>
+                            <li><i class="fa fa-square-o" aria-hidden="true"></i><span>256GB</span></li>
+                            <li><i class="fa fa-square-o" aria-hidden="true"></i><span>512GB</span></li>
+                        </ul>
+                    </div>-->
+
+                    <!-- Color -->
+                    <!--<div class="sidebar_section">
+                        <div class="sidebar_title">
+                            <h5>Màu sắc</h5>
+                        </div>
+                        <ul class="checkboxes">
+                            <li><i class="fa fa-square-o" aria-hidden="true"></i><span>Đen</span></li>
+                            <li class="active"><i class="fa fa-square" aria-hidden="true"></i><span>Hồng</span></li>
+                            <li><i class="fa fa-square-o" aria-hidden="true"></i><span>Trắng</span></li>
+                            <li><i class="fa fa-square-o" aria-hidden="true"></i><span>Xanh blue</span></li>
+                            <li><i class="fa fa-square-o" aria-hidden="true"></i><span>Cam</span></li>
+                            <li><i class="fa fa-square-o" aria-hidden="true"></i><span>Vàng</span></li>
+                            <li><i class="fa fa-square-o" aria-hidden="true"></i><span>Xám</span></li>
+                            <li><i class="fa fa-square-o" aria-hidden="true"></i><span>Tím</span></li>
+                            <li><i class="fa fa-square-o" aria-hidden="true"></i><span>Xanh green</span></li>
+                            <li><i class="fa fa-square-o" aria-hidden="true"></i><span>Đỏ</span></li>
+                        </ul>
+                        <div class="show_more">
+                            <span><span>+</span>Xem Thêm</span>
+                        </div>
+                    </div>-->
+
+                </div>
+
+                <!-- Main Content -->
+
+                <div class="main_content">
+
+                    <!-- Products -->
+
+                    <div class="products_iso">
+                        <div class="row">
+                            <div class="col">
+
+                                <!-- Product Sorting -->
+
+                                @*<div class="product_sorting_container product_sorting_container_top">
+                                    <ul class="product_sorting">
+                                        <li>
+                                            <span class="type_sorting_text">Hãng</span>
+                                            <i class="fa fa-angle-down"></i>
+                                            <ul class="sorting_type">
+                                                <li class="type_sorting_btn"><span>Apple</span></li>
+                                                <li class="type_sorting_btn"><span>SamSung</span></li>
+                                                <li class="type_sorting_btn" data-isotope-option='{ "sortBy": "name" }'><span>Xiaomi</span></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <span>Hiển Thị</span>
+                                            <span class="num_sorting_text">6</span>
+                                            <i class="fa fa-angle-down"></i>
+                                            <ul class="sorting_num">
+                                                <li class="num_sorting_btn"><span>6</span></li>
+                                                <li class="num_sorting_btn"><span>12</span></li>
+                                                <li class="num_sorting_btn"><span>24</span></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+
+                                </div>*@
+
+                                <!-- Product Grid -->
+
+                                <div class="product-grid">
+                                    @foreach (var product in Model)
+                                    {
+                                        @Html.Partial("_ProductCart", product)
+                                    }
+                                </div>
+
+
+                                <!-- Product Sorting -->
+
+                                <div class="product_sorting_container product_sorting_container_bottom clearfix mt-5">
+
+                                    <span class="showing_results">Hiển thị @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) của @Model.PageCount trang</span>
+                                    <div class="pages d-flex flex-row align-items-center">
+                                        <div>
+                                            @{
+                                                int brand = (int)Session["brand"];
+                                            }
+                                            @Html.PagedListPager(Model, page => Url.Action("Brand",
+                                     new { page, brand = @brand }), new PagedListRenderOptions
+                                     {
+                                         UlElementClasses = new string[] { "pagination" },
+                                         MaximumPageNumbersToDisplay = 3,
+                                         LinkToFirstPageFormat = "Previous",
+                                         LinkToPreviousPageFormat = "<",
+                                         LinkToNextPageFormat = ">",
+                                         LinkToLastPageFormat = "Next",
+
+                                     })
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Benefit -->
+
+    <div class="benefit">
+        <div class="container">
+            <div class="row benefit_row">
+                <div class="col-lg-3 benefit_col">
+                    <div class="benefit_item d-flex flex-row align-items-center">
+                        <div class="benefit_icon"><i class="fa fa-truck" aria-hidden="true"></i></div>
+                        <div class="benefit_content">
+                            <h6>miễn phí vận chuyển</h6>
+                            <p>Freeship trên toàn quốc</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 benefit_col">
+                    <div class="benefit_item d-flex flex-row align-items-center">
+                        <div class="benefit_icon"><i class="fa fa-money" aria-hidden="true"></i></div>
+                        <div class="benefit_content">
+                            <h6>trả góp 0%</h6>
+                            <p>Nhanh chóng trong 15 phút chỉ cần CCCD, bằng lái xe</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 benefit_col">
+                    <div class="benefit_item d-flex flex-row align-items-center">
+                        <div class="benefit_icon"><i class="fa fa-undo" aria-hidden="true"></i></div>
+                        <div class="benefit_content">
+                            <h6>15 ngày đổi trả</h6>
+                            <p>Đổi ngay máy mới nếu lỗi từ nhà sản xuất</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 benefit_col">
+                    <div class="benefit_item d-flex flex-row align-items-center">
+                        <div class="benefit_icon"><i class="fa fa-clock-o" aria-hidden="true"></i></div>
+                        <div class="benefit_content">
+                            <h6>mở cửa tất cả các ngày trong tuần</h6>
+                            <p>8AM - 09PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+</section>

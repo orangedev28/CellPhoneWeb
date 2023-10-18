@@ -1,0 +1,19 @@
+
+@import "variables";
+@import "vendor/font-awesome/scss/font-awesome";
+
+//@import "../vendor/animate.css/scss/font-awesome";
+/*- Bootstrap
+/*- ---------------------------------------------- */
+// Import Bootstrap variables after customization for use below
+
+@import "vendor/bootstrap/scss/functions"; // from bootstrap node_modules
+@import "vendor/bootstrap/scss/variables"; // from bootstrap node_modules
+@import "vendor/bootstrap/scss/bootstrap";
+
+@import "layout/layout";
+@import "pages/pages";
+
+.custom-file-input:lang(en) ~ .custom-file-label::after{
+    display: none;
+}

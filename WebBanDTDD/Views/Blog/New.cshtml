@@ -1,0 +1,225 @@
+﻿@model WebBanDTDD.Models.Post
+@{
+    ViewBag.Title = "New";
+}
+<link href="~/theme/css/styleblog.css" rel="stylesheet" />
+
+<section class="sec-blog section single-wrapper mt-5 pt-5 mb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="page-wrapper">
+                    <div class="blog-title-area text-center">
+                        <ol class="breadcrumb hidden-xs-down">
+                            <li class="breadcrumb-item"><a href="~/Home/Index">Home</a></li>
+                            <li class="breadcrumb-item"><a href="~/Blog/Index">Blog</a></li>
+                            <li class="breadcrumb-item active">Galaxy S23 Ultra đang giảm quá 'ngon', deal hot kịch sàn lên đến 5 triệu</li>
+                        </ol>
+
+                        <span class="color-orange"><a href="tech-category-01.html" title="">Công nghệ</a></span>
+
+                        <h3>Galaxy S23 Ultra đang giảm quá 'ngon', deal hot kịch sàn lên đến 5 triệu</h3>
+
+                        <div class="blog-meta big-meta">
+                            <small><a href="tech-single.html" title="">06/04/2023</a></small>
+                            <small><a href="tech-author.html" title="">Đăng bởi Đức Huy</a></small>
+                            <small><a href="#" title=""><i class="fa fa-eye"></i> 1114</a></small>
+                        </div><!-- end meta -->
+                        <!--<div class="post-sharing">
+                            <ul class="list-inline">
+                                <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-facebook"></i> <span class="down-mobile">Share on Facebook</span></a></li>
+                                <li><a href="#" class="tw-button btn btn-primary"><i class="fa fa-twitter"></i> <span class="down-mobile">Tweet on Twitter</span></a></li>
+                                <li><a href="#" class="gp-button btn btn-primary"><i class="fa fa-google-plus"></i></a></li>
+                            </ul>
+                        </div>-->
+                        <!-- end post-sharing -->
+                    </div><!-- end title -->
+
+                    <div class="single-post-media">
+                        <img src="/theme/images/blog/blog1.png" alt="" class="img-fluid">
+                    </div><!-- end media -->
+
+                    <div class="blog-content">
+                        <div class="pp">
+                            <p>Đối với những người yêu công nghệ, việc sở hữu chiếc điện thoại Galaxy S23 Ultra 5G của Samsung là điều mà không ai muốn bỏ qua. Và giờ đây, với deal giảm giá lên đến 5 triệu đồng, việc sở hữu chiếc smartphone này lại trở nên dễ dàng hơn bao giờ hết. Với màn hình siêu đẹp, camera chất lượng cao và cấu hình mạnh mẽ, chiếc điện thoại này sẽ mang đến cho bạn những trải nghiệm tuyệt vời. </p>
+
+                            <h3><strong>Thời gian diễn ra: Đến ngày 30/04/2023. </strong></h3>
+
+                            <p><strong>Lưu ý</strong></p>
+
+                            <ul class="check">
+                                <li>Khuyến mãi có thể kết thúc sớm trước thời hạn nếu hết số lượng sản phẩm.</li>
+                                <li>Ô sản phẩm chưa hiển thị ưu đãi chính xác, để hiện ưu đãi chính xác, khách cần bấm <a href="#">Xem chi tiết</a>.</li>
+                                <li>Giá và khuyến mãi hiện tại áp dụng cho khu vực Hồ Chí Minh, có thể khác so với các tỉnh thành khác. Khách hàng cần chọn khu vực mình sinh sống để xem giá và khuyến mãi chính xác nhất.</li>
+                            </ul>
+
+                        </div><!-- end pp -->
+
+
+
+                        <div class="pp">
+                            @*<h3><strong>Nam non velit est. Sed lobortis arcu vitae nunc molestie consectetur. Nam eget neque ac ex fringilla dignissim eu ac est. Nunc et nisl vel odio posuere. </strong></h3>*@
+
+                            <p>Samsung Galaxy S23 Ultra được trang bị tấm nền Dynamic AMOLED 2X với kích thước màn hình lên đến 6.8 inch và hỗ trơn tần số quét 120 Hz, đem đến tốc độ xử lý hình ảnh vượt trội. Thêm vào đó, màn hình này nổi bật với độ phân giải màn hình QHD+ (1400 x 3088 Pixels), biến mọi nội dung người dùng xem trở nên ngập tràn sức sống, sự sắc nét.</p>
+
+                            <p>Sức mạnh của chiếc điện thoại này đến từ Qualcomm là Snapdragon 8 Gen 2 với hiệu suất tối đa đến 3.36 GHz tích hợp GPU Adreno 740 sẽ đem lại hiệu suất ấn tượng. Bên cạnh đó, viên pin dung lượng 5.000 mAh có thể đáp ứng tối đa khoảng 8 tiếng với các tác vụ thông thường, hỗ trợ sạc nhanh đến 45 W giúp tối ưu thời gian lấp đầy viên pin chỉ còn trong tích tắc.</p>
+
+                            <p>Hãy nhanh tay đặt hàng ngay hôm nay để được nếm trải hào quang rực rỡ!</p>
+
+                            @*<ul class="check">
+                                    <li>Integer sit amet odio ac lectus imperdiet elementum.</li>
+                                    <li>Praesent vitae lacus sed lacus ullamcorper mollis.</li>
+                                    <li>Donec vitae metus ac felis vulputate tincidunt non et ex.</li>
+                                    <li>In dapibus sapien at viverra venenatis.</li>
+                                    <li>Pellentesque mollis velit id maximus finibus.</li>
+                                </ul>
+
+                                <p>Proin ultricies nulla consectetur, sollicitudin dolor at, sollicitudin mauris. Maecenas at nunc nunc. Ut nulla felis, tincidunt et porttitor at, rutrum in dolor. Aenean id tincidunt ligula. Donec vitae placerat odio. Mauris accumsan nibh ut nunc maximus, ac auctor elit vehicula. Cras leo sem, vehicula a ultricies ac, condimentum vitae lectus. Sed ut eros euismod, luctus nisl eu, congue odio. </p>
+
+                                <p><img src="/theme/images/upload/tech_menu_10.jpg" class="float-left" width="380" alt="">Suspendisse ultrices placerat dolor sed efficitur. Morbi in laoreet diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ut massa id lectus laoreet porta non in metus. Donec nibh justo, tincidunt non justo ut, tincidunt malesuada turpis. Cras pellentesque sollicitudin ex eget pharetra.rta non in metus. Donec nibh justo, tincidunt non justo ut, tincidunt malesuada turpis. Cras pellentesque sollicitudin ex eget pharetra.</p>
+
+                                <h3><strong>Nam non velit est. Sed lobortis arcu vitae nunc molestie consectetur. Nam eget neque ac ex fringilla dignissim eu ac est. Nunc et nisl vel odio posuere. </strong></h3>
+
+
+                                <p>Aliquam eget maximus odio. Aliquam varius nisl ut leo fermentum, id fringilla magna tempus. Curabitur quis bibendum lorem, ut suscipit tellus. Morbi id dictum justo, et massa nunc. Mauris laoreet, neque et varius malesuada, justo neque consequat dolor, sit amet semper dui ligula commodo enim. Duis mauris magna, euismod in ante sed, laoreet faucibus elit. Nam euismod vulputate lorem, nec tincidunt lacus volutpat sit amet. In libero eros, dignissim vitae quam sed, maximus consectetur justo. Donec id orci eget odio convallis pellentesque. Quisque urna cras amet.Vivamus non condimentum orci. Pellentesque venenatis nibh sit amet est vehicula lobortis. Cras eget aliquet eros. Nunc lectus elit, suscipit at nunc sed, finibus imperdiet ipsum. Maecenas dapibus neque sodales nulla finibus volutpat. Integer pulvinar massa vitae ultrices posuere. Proin ut tempor turpis. Mauris felis neque, egestas in lobortis et, sodales non ante. Ut vestibulum libero quis luctus tempus. Nullam eget dignissim massa. Vivamus id condimentum orci. Nunc ac sem urna. Aliquam et hendrerit nisl massa nunc. </p>
+
+                                <p><img src="/theme/images/upload/tech_menu_11.jpg" class="float-right" width="380" alt="">Suspendisse ultrices placerat dolor sed efficitur. Morbi in laoreet diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ut massa id lectus laoreet porta non in metus. Donec nibh justo, tincidunt non justo ut, tincidunt malesuada turpis. Cras pellentesque sollicitudin ex eget pharetra.rta non in metus. Donec nibh justo, tincidunt non justo ut, tincidunt malesuada turpis. Cras pellentesque sollicitudin ex eget pharetra.</p>
+
+                                <p>Vivamus non condimentum orci. Pellentesque venenatis nibh sit amet est vehicula lobortis. Cras eget aliquet eros. Nunc lectus elit, suscipit at nunc sed, finibus imperdiet ipsum. Maecenas dapibus neque sodales nulla finibus volutpat. Integer pulvinar massa vitae ultrices posuere. Proin ut tempor turpis. Mauris felis neque, egestas in lobortis et, sodales non ante. Ut vestibulum libero quis luctus tempus. Nullam eget dignissim massa. Vivamus id condimentum orci. Nunc ac sem urna. Aliquam et hendrerit nisl massa nunc. </p>*@
+                        </div><!-- end pp -->
+                    </div><!-- end content -->
+
+                    <div class="blog-title-area">
+                        <div class="tag-cloud-single">
+                            <span>Thể loại</span>
+                            <small><a href="#" title="">Đời sống</a></small>
+                            <small><a href="#" title="">Công nghệ</a></small>
+                            <small><a href="#" title="">Thịnh hành</a></small>
+                            <small><a href="#" title="">Khác</a></small>
+                        </div><!-- end meta -->
+                        <!--<div class="post-sharing">
+                            <ul class="list-inline">
+                                <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-facebook"></i> <span class="down-mobile">Share on Facebook</span></a></li>
+                                <li><a href="#" class="tw-button btn btn-primary"><i class="fa fa-twitter"></i> <span class="down-mobile">Tweet on Twitter</span></a></li>
+                                <li><a href="#" class="gp-button btn btn-primary"><i class="fa fa-google-plus"></i></a></li>
+                            </ul>
+                        </div>-->
+                        <!-- end post-sharing -->
+                    </div><!-- end title -->
+                    <!--<hr class="invis1">
+
+                    <div class="custombox clearfix">
+                        <h4 class="small-title">You may also like</h4>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="blog-box">
+                                    <div class="post-media">
+                                        <a href="tech-single.html" title="">
+                                            <img src="/theme/images/upload/tech_menu_04.jpg" alt="" class="img-fluid">
+                                            <div class="hovereffect">
+                                                <span class=""></span>
+                                            </div>-->
+                    <!-- end hover -->
+                    <!--</a>
+                    </div>-->
+                    <!-- end media -->
+                    <!--<div class="blog-meta">
+                        <h4><a href="tech-single.html" title="">We are guests of ABC Design Studio</a></h4>
+                        <small><a href="blog-category-01.html" title="">Trends</a></small>
+                        <small><a href="blog-category-01.html" title="">21 July, 2017</a></small>
+                    </div>-->
+                    <!-- end meta -->
+                    <!--</div>--><!-- end blog-box -->
+                    <!--</div>--><!-- end col -->
+                    <!--<div class="col-lg-6">
+                        <div class="blog-box">
+                            <div class="post-media">
+                                <a href="tech-single.html" title="">
+                                    <img src="/theme/images/upload/tech_menu_06.jpg" alt="" class="img-fluid">
+                                    <div class="hovereffect">
+                                        <span class=""></span>
+                                    </div>-->
+                    <!-- end hover -->
+                    <!--</a>
+                    </div>-->
+                    <!-- end media -->
+                    <!--<div class="blog-meta">
+                        <h4><a href="tech-single.html" title="">Nostalgia at work with family</a></h4>
+                        <small><a href="blog-category-01.html" title="">News</a></small>
+                        <small><a href="blog-category-01.html" title="">20 July, 2017</a></small>
+                    </div>-->
+                    <!-- end meta -->
+                    <!--</div>--><!-- end blog-box -->
+                    <!--</div>--><!-- end col -->
+                    <!--</div>--><!-- end row -->
+                    <!--</div>--><!-- end custom-box -->
+
+                    <hr class="invis1">
+
+                    <div class="custombox clearfix">
+                        <h4 class="small-title">3 Bình luận</h4>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="comments-list">
+                                    <div class="media">
+                                        <a class="media-left" href="#">
+                                            <img src="~/theme/images/blog/119059987_2758660464352576_6344506673845720173_n.jpg" alt="" class="rounded-circle">
+                                        </a>
+                                        <div class="media-body">
+                                            <h4 class="media-heading user_name">Công Khang <small>1 giờ trước</small></h4>
+                                            <p>Hóng quá!</p>
+                                            <a href="#" class="btn btn-primary btn-sm">Trả Lời</a>
+                                        </div>
+                                    </div>
+                                    <div class="media">
+                                        <a class="media-left" href="#">
+                                            <img src="~/theme/images/blog/Dwayne_Johnson_2014_(cropped).jpg" alt="" class="rounded-circle">
+                                        </a>
+                                        <div class="media-body">
+
+                                            <h4 class="media-heading user_name">Ngọc Cường <small>3 giờ trước</small></h4>
+
+                                            <p>Mới mua xong hôm bữa.</p>
+
+                                            <a href="#" class="btn btn-primary btn-sm">Trả Lời</a>
+                                        </div>
+                                    </div>
+                                    <div class="media last-child">
+                                        <a class="media-left" href="#">
+                                            <img src="~/theme/images/blog/tải xuống.jpg" alt="" class="rounded-circle">
+                                        </a>
+                                        <div class="media-body">
+
+                                            <h4 class="media-heading user_name">Đức Huy <small>5 giờ trước</small></h4>
+                                            <p>IPhone very good!</p>
+
+                                            <a href="#" class="btn btn-primary btn-sm">Trả Lời</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- end col -->
+                        </div><!-- end row -->
+                    </div><!-- end custom-box -->
+                    @*<hr class="invis1">
+
+                        <div class="custombox clearfix">
+                            <h4 class="small-title">Leave a Reply</h4>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <form class="form-wrapper">
+                                        <input type="text" class="form-control" placeholder="Your name">
+                                        <input type="text" class="form-control" placeholder="Email address">
+                                        <input type="text" class="form-control" placeholder="Website">
+                                        <textarea class="form-control" placeholder="Your comment"></textarea>
+                                        <button type="submit" class="btn btn-primary">Submit Comment</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>*@
+                </div><!-- end page-wrapper -->
+            </div><!-- end col -->
+        </div><!-- end row -->
+    </div><!-- end container -->
+
+</section>
+

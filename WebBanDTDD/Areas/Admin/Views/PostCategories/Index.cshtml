@@ -1,0 +1,53 @@
+﻿@model IEnumerable<WebBanDTDD.Models.PostCategory>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="p-5">
+
+    <h2>Post Categories</h2>
+
+    <div class=" p-4">
+        <a href="@Url.Action("Create","PostCategories")" class="btn btn-default" style="background-color: #01a9ac; border-color: #01a9ac; color: #fff; cursor: pointer; -webkit-transition: all ease-in .3s; transition: all ease-in .3s;">Create</a>
+    </div>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+
+                <td>
+                    @item.Status
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedBy)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CateID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CateID }, new { onclick = "return confirm('Do you really want to delete the tag " + item.Name + "?')" })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>

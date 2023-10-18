@@ -1,0 +1,36 @@
+﻿@model IEnumerable<WebBanDTDD.Models.Brand>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="p-5">
+    <h2>Brands</h2>
+
+    <div class=" p-4">
+        <a href="@Url.Action("Create","Brands")" class="btn btn-default" style="background-color: #01a9ac; border-color: #01a9ac; color: #fff; cursor: pointer; -webkit-transition: all ease-in .3s; transition: all ease-in .3s;">Create</a>
+    </div>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.BrandID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.BrandID }, new { onclick = "return confirm('Do you really want to delete the tag " + item.Name + "?')" })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>

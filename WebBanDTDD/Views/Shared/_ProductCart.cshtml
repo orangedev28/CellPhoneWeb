@@ -1,0 +1,49 @@
+﻿@model WebBanDTDD.Models.Product
+
+@{
+    var info = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+    string price = string.Format(info, "{0:c}", Model.Price);
+    string PromotionPrice = string.Format(info, "{0:c}", Model.PromotionPrice);
+
+    string category = "Cate-"+Model.CateID.ToString();
+}
+<div class="product-item @category">
+    <div class="product discount product_filterb">
+        <div class="product_image">
+            <img src="@Model.Image" alt="">
+        </div>
+        <div class="favorite favorite_left"></div>
+        @if (Model.Hot > DateTime.Now)
+        {
+            <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>Hot</span></div>
+        }
+        <div class="product_info">
+            <h6 class="product_name"><a href=@Url.Action("Product", "Shop", new {id=Model.ProductID})>@Model.Name</a></h6>
+            <div class="product_price">
+                @price
+                @if (Model.PromotionPrice > 0)
+                {
+                    <span>@PromotionPrice </span>
+                }
+
+
+            </div>
+        </div>
+    </div>
+    @if (Model.Quantity > 0)
+    {
+        <div class="red_button add_to_cart_button text-uppercase"><a href="@Url.Action("addShoppingcart", "ShoppingCart",new {id=Model.ProductID})">thêm vào giỏ hàng</a></div>
+    }
+    else
+    {
+        <div class="red_button add_to_cart_button text-uppercase">hết hàng</div>
+    }
+
+
+
+
+
+
+
+
+</div>

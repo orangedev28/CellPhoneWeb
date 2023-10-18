@@ -1,0 +1,102 @@
+﻿@model IEnumerable<WebBanDTDD.Models.ShoppingCart>
+@{
+    ViewBag.Title = "Index";
+}
+@{
+    var info = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+}
+@using WebBanDTDD.Models;
+
+<div class="p-5 mt-5">
+    <h2>Giỏ hàng của bạn</h2>
+    <h4>Đây là những sản phẩm bạn đã thêm vào giỏ hàng.</h4>
+    <table class="table table-bordered table-striped mt-4">
+        <thead>
+            <tr>
+                <th>Hình Ảnh Sản Phẩm</th>
+                <th>Tên Sản Phẩm</th>
+                <th>Giá Sản Phẩm </th>
+                <th>Số Lượng</th>
+                <th>Tổng Giá Sản Phẩm</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var line in Model)
+            {
+                <tr>
+                    <td class="text-center"><img src="@line.Image" width="100" height="100" /></td>
+                    <td class="text-left">@line.Name</td>
+                    <td class="text-right"> @string.Format(info, "{0:c}", line.Price)</td>
+                    <td class="text-right">
+                        @line.Quantity
+                    </td>
+                    <td> @string.Format(info, "{0:c}", line.PriceTotal)</td>
+                    <td>
+                        @{
+
+                            Entities _dbContext = new Entities();
+                            List<ShoppingCart> shoppingCarts = Session["shoppingCart"] as List<ShoppingCart>;
+
+                            ShoppingCart product = shoppingCarts.Find(p => p.Id == line.Id);
+                            var check = (from l in _dbContext.Products
+                                         where l.ProductID == line.Id && l.Quantity > product.Quantity
+                                         select l).Count();
+                            if (check > 0)
+                            {
+
+                                <a class="btn btn-danger" href="@Url.Action("addShoppingcart", "ShoppingCart", new {id=line.Id})">
+                                    <i class="glyphicon glyphicon-plus">+</i>
+                                </a>
+                            }
+                            else
+                            {
+                                <p class="btn btn-danger plus" href="#">
+                                    <i class="glyphicon glyphicon-plus">+</i>
+                                </p>
+                            }
+                        }
+
+                    </td>
+                    <td>
+                        <a class="btn btn-danger" href="@Url.Action("removeShoppingcart", "ShoppingCart", new {id=line.Id})">
+                            <i class="glyphicon glyphicon-minus">-</i>
+                        </a>
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="text-right">Số Lượng sản phẩm giỏ hàng:</td>
+                <td class="text-right">
+                    @ViewBag.TotalQuantity
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" class="text-right">Tổng giá giỏ hàng:</td>
+                <td class="text-right">
+                    @string.Format(info, "{0:c}", ViewBag.TotalPrice)
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+    <div class="text-center">
+        <a class="btn btn-primary" href="@Url.Action("Index","Home")">Trang Chủ</a>
+        <a class="btn btn-primary" href="@Url.Action("CheckOut","ShoppingCart")">Thanh toán ngay!</a>
+        <a class="btn btn-primary" href="@Url.Action("removeAllShoppingCart","ShoppingCart")">Xóa 
+toàn bộ giỏ hàng!</a>
+        <a href="~/Views/Shared/_BestSellers.cshtml"></a>
+
+        <a class="btn btn-primary" href="@Request.UrlReferrer.ToString()">Tiếp tục mua</a>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $(".plus").click(function () {
+            alert("hết hàng");
+        });
+    })
+</script>

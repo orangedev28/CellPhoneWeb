@@ -1,0 +1,26 @@
+﻿@model WebBanDTDD.Models.Post
+@{
+    ViewBag.Title = "_Bolg";
+}
+@{ 
+    string CreatedDate = string.Format("dd/MM/yyyy",Model.CreatedDate);
+}
+<div class="blog-box row">
+    <div class="col-md-4">
+        <div class="post-media">
+            <a href="#" title="">
+                <img src="@Model.Image" alt="" class="img-fluid">
+                <div class="hovereffect"></div>
+            </a>
+        </div><!-- end media -->
+    </div><!-- end col -->
+
+    <div class="blog-meta big-meta col-md-8">
+        <h4><a href="tech-single.html" title="">@Model.Name</a></h4>
+        <p>@Model.Description</p>
+        <small class="firstsmall"><a class="bg-orange" href="tech-category-01.html" title="">@Model.PostCategory.Name</a></small>
+        <small><a href="tech-single.html" title="">@CreatedDate</a></small>
+        <small><a href="tech-author.html" title="">@Model.CreatedBy</a></small>
+        @*<small><a href="tech-single.html" title=""><i class="fa fa-eye"></i> 1114</a></small>*@
+    </div><!-- end meta -->
+</div><!-- end blog-box -->
